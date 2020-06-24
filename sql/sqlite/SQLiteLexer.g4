@@ -1,0 +1,273 @@
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2014 by Bart Kiers
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * Project      : sqlite-parser; an ANTLR4 grammar for SQLite
+ *                https://github.com/bkiers/sqlite-parser
+ * Developed by : Bart Kiers, bart@big-o.nl
+ */
+lexer grammar SQLiteLexer;
+
+CURRENTLOCATION: '$CURRENTLOCATION$' ;
+NEWLINE: '\n';
+ 
+SCOL : ';';
+DOT : '.';
+OPEN_PAR : '(';
+CLOSE_PAR : ')';
+COMMA : ',';
+ASSIGN : '=';
+STAR : '*';
+PLUS : '+';
+MINUS : '-';
+TILDE : '~';
+PIPE2 : '||';
+DIV : '/';
+MOD : '%';
+LT2 : '<<';
+GT2 : '>>';
+AMP : '&';
+PIPE : '|';
+LT : '<';
+LT_EQ : '<=';
+GT : '>';
+GT_EQ : '>=';
+EQ : '==';
+NOT_EQ1 : '!=';
+NOT_EQ2 : '<>';
+
+// http://www.sqlite.org/lang_keywords.html
+K_ABORT:'ABORT';
+K_ACTION:'ACTION';
+K_ADD:'ADD';
+K_AFTER:'AFTER';
+K_ALL:'ALL';
+K_ALTER:'ALTER';
+K_ANALYZE:'ANALYZE';
+K_AND:'AND';
+K_AS:'AS';
+K_ASC:'ASC';
+K_ATTACH:'ATTACH';
+K_AUTOINCREMENT:'AUTOINCREMENT';
+K_BEFORE:'BEFORE';
+K_BEGIN:'BEGIN';
+K_BETWEEN:'BETWEEN';
+K_BY:'BY';
+K_CASCADE:'CASCADE';
+K_CASE:'CASE';
+K_CAST:'CAST';
+K_CHECK:'CHECK';
+K_COLLATE:'COLLATE';
+K_COLUMN:'COLUMN';
+K_COMMIT:'COMMIT';
+K_CONFLICT:'CONFLICT';
+K_CONSTRAINT:'CONSTRAINT';
+K_CREATE:'CREATE';
+K_CROSS:'CROSS';
+K_CURRENT_DATE:'CURRENT_DATE';
+K_CURRENT_TIME:'CURRENT_TIME';
+K_CURRENT_TIMESTAMP:'CURRENT_TIMESTAMP';
+K_DATABASE:'DATABASE';
+K_DEFAULT:'DEFAULT';
+K_DEFERRABLE:'DEFERRABLE';
+K_DEFERRED:'DEFERRED';
+K_DELETE:'DELETE';
+K_DESC:'DESC';
+K_DETACH:'DETACH';
+K_DISTINCT:'DISTINCT';
+K_DROP:'DROP';
+K_EACH:'EACH';
+K_ELSE:'ELSE';
+K_END:'END';
+K_ESCAPE:'ESCAPE';
+K_EXCEPT:'EXCEPT';
+K_EXCLUSIVE:'EXCLUSIVE';
+K_EXISTS:'EXISTS';
+K_EXPLAIN:'EXPLAIN';
+K_FAIL:'FAIL';
+K_FOR:'FOR';
+K_FOREIGN:'FOREIGN';
+K_FROM:'FROM';
+K_FULL:'FULL';
+K_GLOB:'GLOB';
+K_GROUP:'GROUP';
+K_HAVING:'HAVING';
+K_IF:'IF';
+K_IGNORE:'IGNORE';
+K_IMMEDIATE:'IMMEDIATE';
+K_IN:'IN';
+K_INDEX:'INDEX';
+K_INDEXED:'INDEXED';
+K_INITIALLY:'INITIALLY';
+K_INNER:'INNER';
+K_INSERT:'INSERT';
+K_INSTEAD:'INSTEAD';
+K_INTERSECT:'INTERSECT';
+K_INTO:'INTO';
+K_IS:'IS';
+K_ISNULL:'ISNULL';
+K_JOIN:'JOIN';
+K_KEY:'KEY';
+K_LEFT:'LEFT';
+K_LIKE:'LIKE';
+K_LIMIT:'LIMIT';
+K_MATCH:'MATCH';
+K_NATURAL:'NATURAL';
+K_NO:'NO';
+K_NOT:'NOT';
+K_NOTNULL:'NOTNULL';
+K_NULL:'NULL';
+K_OF:'OF';
+K_OFFSET:'OFFSET';
+K_ON:'ON';
+K_OR:'OR';
+K_ORDER:'ORDER';
+K_OUTER:'OUTER';
+K_PLAN:'PLAN';
+K_PRAGMA:'PRAGMA';
+K_PRIMARY:'PRIMARY';
+K_QUERY:'QUERY';
+K_RAISE:'RAISE';
+K_RECURSIVE:'RECURSIVE';
+K_REFERENCES:'REFERENCES';
+K_REGEXP:'REGEXP';
+K_REINDEX:'REINDEX';
+K_RELEASE:'RELEASE';
+K_RENAME:'RENAME';
+K_REPLACE:'REPLACE';
+K_RESTRICT:'RESTRICT';
+K_RIGHT:'RIGHT';
+K_ROLLBACK:'ROLLBACK';
+K_ROW:'ROW';
+K_SAVEPOINT:'SAVEPOINT';
+K_SELECT:'SELECT';
+K_SET:'SET';
+K_TABLE:'TABLE';
+K_TEMP:'TEMP';
+K_TEMPORARY:'TEMPORARY';
+K_THEN:'THEN';
+K_TO:'TO';
+K_TRANSACTION:'TRANSACTION';
+K_TRIGGER:'TRIGGER';
+K_UNION:'UNION';
+K_UNIQUE:'UNIQUE';
+K_UPDATE:'UPDATE';
+K_USING:'USING';
+K_VACUUM:'VACUUM';
+K_VALUES:'VALUES';
+K_VIEW:'VIEW';
+K_VIRTUAL:'VIRTUAL';
+K_WHEN:'WHEN';
+K_WHERE:'WHERE';
+K_WITH:'WITH';
+K_WITHOUT:'WITHOUT';
+
+
+// Function
+// K_GLOB	:	G L O B	;
+// K_LIKE	:	L I K E	;
+// K_REPLACE	:	R E P L A C E	;
+K_ABS:'ABS';
+K_CHANGES:'CHANGES';
+K_CHAR:'CHAR';
+K_COALESCE:'COALESCE';
+K_HEX:'HEX';
+K_IFNULL:'IFNULL';
+K_INSTR:'INSTR';
+K_LAST_INSERT_ROWID:'LAST_INSERT_ROWID';
+K_LENGTH:'LENGTH';
+K_LIKELIHOOD:'LIKELIHOOD';
+K_LIKELY:'LIKELY';
+K_LOAD_EXTENSION:'LOAD_EXTENSION';
+K_LOWER:'LOWER';
+K_LTRIM:'LTRIM';
+K_MAX:'MAX';
+K_MIN:'MIN';
+K_NULLIF:'NULLIF';
+K_PRINTF:'PRINTF';
+K_QUOTE:'QUOTE';
+K_RANDOM:'RANDOM';
+K_RANDOMBLOB:'RANDOMBLOB';
+K_ROUND:'ROUND';
+K_RTRIM:'RTRIM';
+K_SOUNDEX:'SOUNDEX';
+K_SQLITE_COMPILEOPTION_GET:'SQLITE_COMPILEOPTION_GET';
+K_SQLITE_COMPILEOPTION_USED:'SQLITE_COMPILEOPTION_USED';
+K_SQLITE_OFFSET:'SQLITE_OFFSET';
+K_SQLITE_SOURCE_ID:'SQLITE_SOURCE_ID';
+K_SQLITE_VERSION:'SQLITE_VERSION';
+K_SUBSTR:'SUBSTR';
+K_TOTAL_CHANGES:'TOTAL_CHANGES';
+K_TRIM:'TRIM';
+K_TYPEOF:'TYPEOF';
+K_UNICODE:'UNICODE';
+K_UNLIKELY:'UNLIKELY';
+K_UPPER:'UPPER';
+K_ZEROBLOB:'ZEROBLOB';
+
+
+IDENTIFIER
+ : '"' (~'"' | '""')* '"'
+ | '`' (~'`' | '``')* '`'
+ | '[' ~']'* ']'
+ | [A-Z_] [A-Z_0-9]* // TODO check: needs more chars in set
+ ;
+
+NUMERIC_LITERAL
+ : [0-9]+ ( '.' [0-9]* )? ( 'E' [-+]? [0-9]+ )?
+ | '.' [0-9]+ ( 'E' [-+]? [0-9]+ )?
+ ;
+
+BIND_PARAMETER
+ : '?' [0-9]*
+ | [:@$] IDENTIFIER
+ ;
+
+STRING_LITERAL
+ : '\'' ( ~'\'' | '\'\'' )* '\''
+ ;
+
+BLOB_LITERAL
+ : 'X' STRING_LITERAL
+ ;
+
+SINGLE_LINE_COMMENT
+ : '--' ~[\n]* -> channel(HIDDEN)
+ ;
+
+MULTILINE_COMMENT
+ : '/*' .*? ( '*/' | EOF ) -> channel(HIDDEN)
+ ;
+
+SPACES
+ : [ \u000B\t\r] -> channel(HIDDEN)
+ ;
+
+UNEXPECTED_CHAR
+ : .
+ ;
+
+
+ 
